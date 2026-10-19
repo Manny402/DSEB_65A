@@ -39,7 +39,6 @@ function chime(notes=[523.25,659.25,783.99],volume=.045){
   if(!soundOn)return;
   try{audio ||= new (window.AudioContext||window.webkitAudioContext)();audio.resume();notes.forEach((f,i)=>{const o=audio.createOscillator(),g=audio.createGain(),t=audio.currentTime+i*.12;o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(volume,t+.02);g.gain.exponentialRampToValueAtTime(.001,t+.5);o.connect(g);g.connect(audio.destination);o.start(t);o.stop(t+.55);});}catch{soundOn=false;$('sound').setAttribute('aria-pressed','false');$('sound').setAttribute('aria-label','Bật âm thanh');}
 }
-function setSteps(step){document.querySelectorAll('.step').forEach((el,i)=>{el.classList.toggle('active',i===step);el.classList.toggle('done',i<step);if(i===step)el.setAttribute('aria-current','step');else el.removeAttribute('aria-current');});}
 function action(label,text,hint){$('action-label').textContent=label;$('action-text').textContent=text;$('action-hint').textContent=hint;}
 function spin(){
   if(state!=='wheel')return;
@@ -54,7 +53,7 @@ function spin(){
     state='gift';$('experience').dataset.stage='gift';$('wheel-stage').hidden=true;$('gift-stage').hidden=false;$('side-note').hidden=true;
     $('intro-text').innerHTML='Một món quà nhỏ đã chọn bạn rồi.<br>Chạm vào hộp quà để mở điều bất ngờ nhé.';
     action('Một món quà dành riêng cho bạn','Mở quà','Chạm vào hộp quà hoặc nút bên trên.');
-    $('action').disabled=false;setSteps(1);chime();
+    $('action').disabled=false;chime();
     if(document.activeElement===$('wheel-center'))$('gift').focus({preventScroll:true});
   },1800);
 }
@@ -67,9 +66,9 @@ function openGift(){
     $('experience').dataset.stage='drink';$('stage-art').classList.remove('opening');$('gift-stage').hidden=true;$('drink-stage').hidden=false;
     const drink=drinks[selectedDrink];$('drink-art').innerHTML=drinkSVG(drink);$('drink-name').textContent=drink.name;$('drink-description').textContent=drink.note;
     $('headline').innerHTML='Chúc bạn một ngày<br><em>thật ngọt ngào</em><span class="title-dot">.</span>';
-    $('intro-text').hidden=true;$('date-lockup').hidden=true;$('letter').hidden=false;
+    $('intro-text').hidden=true;$('letter').hidden=false;
     action('Cốc nước này, gửi bạn nhé ♡','Nhận thêm chút may mắn','Niềm vui nhỏ có thể bắt đầu lại bất cứ lúc nào.');
-    $('action').disabled=false;setSteps(2);celebrate();chime([523,659,784,1047],.045);
+    $('action').disabled=false;celebrate();chime([523,659,784,1047],.045);
     if(document.activeElement===$('gift'))$('action').focus({preventScroll:true});
   },1000);
 }
@@ -79,8 +78,8 @@ function reset(){
   $('wheel').style.transition='none';rotation=0;$('wheel').style.transform='rotate(0deg)';
   $('headline').innerHTML='Một chút<br><em>ngọt ngào,</em><br>dành cho bạn<span class="title-dot">.</span>';
   $('intro-text').hidden=false;$('intro-text').innerHTML='Hôm nay, vũ trụ có một món quà nhỏ gửi đến bạn.<br>Thử một chút may mắn, nhận một chút yêu thương.';
-  $('date-lockup').hidden=false;$('letter').hidden=true;$('confetti').replaceChildren();
-  action('Quay để nhận phần quà bí ấn','Quay một chút may mắn','Một vòng quay nhỏ. Cả một trời yêu thương.');setSteps(0);
+  $('letter').hidden=true;$('confetti').replaceChildren();
+  action('Quay để nhận phần quà bí ấn','Quay một chút may mắn','Một vòng quay nhỏ. Cả một trời yêu thương.');
 }
 function drinkSVG(d){
   let toppings='';
@@ -103,4 +102,4 @@ $('action').addEventListener('click',()=>{if(state==='wheel')spin();else if(stat
 $('wheel-center').addEventListener('click',spin);
 $('gift').addEventListener('click',openGift);
 $('sound').addEventListener('click',()=>{soundOn=!soundOn;$('sound').setAttribute('aria-pressed',String(soundOn));$('sound').setAttribute('aria-label',soundOn?'Tắt âm thanh':'Bật âm thanh');if(soundOn)chime([659,784],.025);});
-drawWheel();setSteps(0);
+drawWheel();

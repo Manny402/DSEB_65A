@@ -2,3 +2,35 @@
 @media(min-width:1500px){main{min-height:calc(100svh - 245px)}.header{height:135px}.stage-art{height:450px}.wheel-stage{width:390px;height:390px}.orbit-one{width:440px;height:440px}.orbit-two{width:500px;height:390px}.footer{min-height:110px}}@media(max-width:1050px){.header{padding:0 5%;height:100px}main{gap:20px;padding-top:28px;min-height:calc(100svh - 185px)}h1{font-size:63px;letter-spacing:-3px}.eyebrow{font-size:8px;letter-spacing:1.2px}.wheel-stage{width:300px;height:300px}.stage-art{height:360px}.orbit-one{width:340px;height:340px}.orbit-two{width:370px;height:300px}.side-note{right:-10px;top:-10px;font-size:11px;max-width:120px}.footer{max-width:90%;min-height:85px}.footer>span:first-child{display:none}.footer-end{font-size:7px}.little-flower{display:none}.date-lockup{gap:15px}.date-note{padding-left:15px}.intro-text{font-size:11px}.actions>p{font-size:18px}.gift-stage{transform:scale(.9)}}
 @media(max-width:700px){.header{height:86px;padding:0 6%}.brand{font-size:16px;gap:8px;letter-spacing:1.5px}.brand-flower{font-size:38px}.brand small{font-size:5.5px;letter-spacing:1.5px}.occasion{display:none}.sound{width:35px;height:35px}main{display:flex;flex-direction:column;gap:10px;padding:20px 6% 35px;min-height:0}.intro{text-align:center;padding:0;width:100%}.eyebrow{justify-content:center;font-size:7px;letter-spacing:1.5px;margin-bottom:17px}.eyebrow>span{width:15px}h1{font-size:clamp(40px,9.7vw,62px);letter-spacing:-2px;line-height:1.16;margin-bottom:16px}h1 br:first-child{display:none}h1 em:before{content:' '}.intro-text{font-size:10px;line-height:1.9;margin:0 auto;max-width:350px}.intro-text br{display:none}.date-lockup{display:none}.play-area{width:100%}.stage-art{height:340px;max-width:370px;margin:10px auto 0}.wheel-stage{width:282px;height:282px}.orbit-one{width:315px;height:315px}.orbit-two{width:340px;height:280px}.wheel{border-width:8px}.wheel-center{width:71px;height:71px;border-width:4px}.wheel-center>span{font-size:30px}.wheel-center>small{font-size:6px}.wheel-pointer{width:30px;left:calc(50% - 15px);top:-22px}.spark-one{left:0;top:14%;font-size:28px}.spark-two{right:0;bottom:10%;font-size:35px}.spark-three{left:5%;bottom:7%}.side-note{right:0;top:-4px;font-size:9px;max-width:96px}.side-note svg{width:42px}.actions{margin-top:10px}.actions>p{font-size:18px;margin-bottom:14px}.primary{min-height:51px;min-width:280px;font-size:10px}.action-hint{font-size:8px;margin-top:12px}.footer{min-height:90px;justify-content:center;flex-wrap:wrap;gap:14px;padding:20px 0}.footer-end{width:100%;text-align:center;font-size:7px}.steps{gap:10px;font-size:8px}.steps>b{width:18px}.step{gap:5px}.step i{width:22px;height:22px;font-size:7px}.gift-stage{width:300px;height:310px}.gift{width:300px}.gift-halo{width:270px;height:270px;left:15px}.gift-caption{bottom:-3px;font-size:12px}.drink-art{height:230px;width:220px}.drink-aura{width:290px;height:290px;top:0}.drink-stage h2{font-size:24px;margin:10px 0 5px}.drink-tag{font-size:6px}.drink-stage p{font-size:9px}.drink-badge{top:15px;right:16px;width:59px;height:59px;font-size:6px}main[data-stage=drink] h1{font-size:40px;margin-bottom:15px}main[data-stage=drink] .eyebrow{margin-bottom:15px}.letter{text-align:left;padding:0 0 0 15px;margin:14px auto 0;max-width:390px}.letter p{font-size:11px;line-height:1.95}.signature{font-size:12px;margin-top:9px}main[data-stage=drink] .stage-art{height:340px;margin-top:0}main[data-stage=drink] .actions{margin-top:0}main[data-stage=drink] .actions>p{font-size:15px}.header-right{gap:0}}@media(max-width:360px){main{padding-left:4%;padding-right:4%}.stage-art{transform:scale(.93);margin-top:0;margin-bottom:-15px}.steps{gap:6px}.steps>b{width:10px}.primary{min-width:265px}h1{font-size:38px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.confetti{display:none}}
 @media(max-width:700px){.play-area{overflow:clip}.intro{min-width:0}.intro-text br{display:initial}}
+
+main:not([data-stage=drink]) .eyebrow,
+main:not([data-stage=drink]) .date-lockup {
+  display: none;
+}
+
+main[data-stage=drink] .date-lockup {
+  display: flex;
+  margin-top: 28px;
+}
+
+.footer {
+  justify-content: center;
+  text-align: center;
+}
+
+.footer-credit {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 14px;
+  font-style: italic;
+  letter-spacing: .5px;
+}
+
+@media(max-width:700px) {
+  main[data-stage=drink] .date-lockup {
+    justify-content: center;
+    margin-top: 22px;
+  }
+  .date-lockup .date { font-size: 36px; }
+  .date-lockup .date-note { text-align: left; font-size: 9px; }
+}
