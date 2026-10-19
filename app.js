@@ -76,7 +76,7 @@ function reset(){
   if(state!=='drink')return;
   state='wheel';$('experience').dataset.stage='wheel';$('drink-stage').hidden=true;$('wheel-stage').hidden=false;$('side-note').hidden=false;$('gift').disabled=false;$('wheel-center').disabled=false;
   $('wheel').style.transition='none';rotation=0;$('wheel').style.transform='rotate(0deg)';
-  $('headline').innerHTML='Một chút<br><em>ngọt ngào,</em><br>dành cho bạn<span class="title-dot">.</span>';
+  $('headline').innerHTML='Vòng quay<br><em>may mắn</em>';
   $('intro-text').hidden=false;$('intro-text').innerHTML='Hôm nay, vũ trụ có một món quà nhỏ gửi đến bạn.<br>Thử một chút may mắn, nhận một chút yêu thương.';
   $('letter').hidden=true;$('confetti').replaceChildren();
   action('Quay để nhận phần quà bí ấn','Quay một chút may mắn','Một vòng quay nhỏ. Cả một trời yêu thương.');
